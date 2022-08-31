@@ -6,18 +6,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping("events")
 public class EventController {
 
 
+//    @GetMapping
+//    public String displayAllEvents(Model model) {
+//        model.addAttribute("title", "All Events");
+//        model.addAttribute("events", EventData.getAll());
+//        return "events/index";
+//    }
+
+
     @GetMapping
-    public String displayAllEvents(Model model) {
-        model.addAttribute("title", "All Events");
-        model.addAttribute("events", EventData.getAll());
+    public String displayAllEvents(Model model){
+        HashMap<String, String> events = new HashMap<>();
+        events.put("Menteaship","A fun meetup for connecting with mentors");
+        events.put("Code With Pride","A fun meetup sponsored by LaunchCode");
+        events.put("Javascripty", "An imaginary meetup for Javascript developers");
+
+        model.addAttribute("events", events);
         return "events/index";
     }
+
 
     //lives at /events/create
     @GetMapping("create")
