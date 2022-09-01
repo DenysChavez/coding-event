@@ -1,4 +1,5 @@
 package org.launchcode.codingevent.controllers;
+import org.launchcode.codingevent.data.EventData;
 import org.launchcode.codingevent.models.Event;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +11,10 @@ import java.util.ArrayList;
 @RequestMapping("events")
 public class EventController {
 
-    private static ArrayList<Event> events = new ArrayList<>();
-
     @GetMapping
     public String displayAllEvents(Model model) {
         model.addAttribute("title", "All Events");
-        model.addAttribute("events", events);
+        model.addAttribute("events", EventData.getAll());
         return "events/index";
     }
 
@@ -29,7 +28,7 @@ public class EventController {
     //lives at /events/create
     @PostMapping("create")
     public String processCreateEventForm(@RequestParam String eventName, @RequestParam String descriptionEvent) {
-        events.add(new Event(eventName, descriptionEvent));
+        EventData.add(new Event(eventName, descriptionEvent));
         return "redirect:";
     }
 
