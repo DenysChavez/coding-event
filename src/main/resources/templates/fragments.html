@@ -8,14 +8,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav th:fragment="navigation">
-    <h1 th:text="${title}">Coding Events</h1>
-    <ul class="nav">
-        <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>
-        <li class="nav-item"><a class="nav-link" href="/events/delete">Delete Events</a></li>
+<header th:fragment="header">
+    <nav>
+        <h1 th:text="${title}">Coding Events</h1>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>
+        </ul>
+    </nav>
+</header>
 
-    </ul>
-</nav>
 </body>
 </html>
