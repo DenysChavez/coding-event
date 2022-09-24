@@ -1,14 +1,15 @@
 package org.launchcode.codingevent.models;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Objects;
 
-public class Event {
-
-    private int id;
-    private static int nextId = 1;
+@Entity
+public class Event extends AbstractEntity{
+//    @Id
+//    @GeneratedValue
+//    private int id;
 
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
@@ -20,20 +21,27 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    private EventType type;
 
+    public Event(String name, String description, String contactEmail, EventType type) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
-        this.id = nextId;
-        this.nextId++;
-
+        this.type = type;
     }
 
-    public Event() {}
+    public Event() { }
 
     public String getContactEmail() {
         return contactEmail;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public void setContactEmail(String contactEmail) {
@@ -56,9 +64,9 @@ public class Event {
         this.description = description;
     }
 
-    public int getId() {
-        return id;
-    }
+//    public int getId() {
+//        return id;
+//    }
 
 
     @Override
@@ -66,18 +74,9 @@ public class Event {
         return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Event event = (Event) o;
-
-        return id == event.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id);
+//    }
 }
