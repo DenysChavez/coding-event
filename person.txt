@@ -1,0 +1,12 @@
+Person Class:
+
+Fields:
+-Name -String
+-Email  -String
+-Password - String
+-List of events -List<Event> : Many to Many
+-favorite category -  EventCategory : Many to One
+
+Methods:
+-Getter and Setters
+-Get back favorite events (return all events that have to do with the favorite category)

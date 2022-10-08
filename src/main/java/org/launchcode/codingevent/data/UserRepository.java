@@ -1,0 +1,8 @@
+package org.launchcode.codingevent.data;
+import org.launchcode.codingevent.models.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<User, Integer> {
+
+    User findByUsername(String username);
+}
